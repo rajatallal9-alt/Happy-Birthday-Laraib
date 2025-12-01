@@ -33,7 +33,7 @@
     box-sizing:border-box;
     opacity:0;
     transform: translateY(24px);
-    transition: opacity .6s ease, transform .6s ease;
+    transition: opacity .45s ease, transform .45s ease;
     pointer-events:none;
   }
   .section.active{
@@ -43,7 +43,7 @@
     z-index:5;
   }
 
-  /* Envelope container (made bigger to fit longer text) */
+  /* Envelope container (bigger to fit long text) */
   .card-wrap{
     width:100%;
     max-width:920px;
@@ -53,16 +53,15 @@
     gap:18px;
   }
 
-  /* ENVELOPE (pure CSS) - enlarged */
+  /* ENVELOPE (enlarged) */
   .envelope {
     width: 720px;
     max-width: 94%;
-    height: 420px; /* increased height */
+    height: 420px;
     position: relative;
     perspective: 1400px;
   }
 
-  /* Body/back of envelope */
   .envelope .body {
     position:absolute;
     inset:0;
@@ -77,7 +76,6 @@
     box-sizing:border-box;
   }
 
-  /* Flap (front triangle) */
   .envelope .flap {
     position:absolute;
     top:0;
@@ -109,7 +107,6 @@
     opacity:.95;
   }
 
-  /* Letter inside envelope (made taller and scrollable) */
   .envelope .letter {
     position:absolute;
     left:6%;
@@ -130,11 +127,10 @@
     flex-direction:column;
     justify-content:flex-start;
     align-items:flex-start;
-    overflow:auto; /* allow scrolling for long text */
+    overflow:auto;
     scrollbar-width: thin;
   }
 
-  /* When envelope is opened */
   .envelope.opened .flap {
     transform: rotateX(-180deg) translateY(-6%);
   }
@@ -143,7 +139,6 @@
     opacity:1;
   }
 
-  /* Message content inside the letter */
   .card-content{
     width:100%;
     color:var(--accent-2);
@@ -152,7 +147,7 @@
   .card-content h1,
   .card-content h2 {
     margin:0 0 8px 0;
-    font-size:24px;
+    font-size:22px;
     color:var(--accent-2);
     text-align:center;
     width:100%;
@@ -171,7 +166,6 @@
     text-align:left;
   }
 
-  /* Buttons */
   .controls{
     display:flex;
     gap:12px;
@@ -195,7 +189,6 @@
     border:1px solid rgba(75,46,131,0.08);
   }
 
-  /* Final cake helpers */
   #cake { max-width:40%; width:320px; transition: transform .4s ease; border-radius:14px; }
   #knife { width:130px; position:absolute; left:-300px; top:40%; transform:rotate(-18deg); transition:left .7s, transform .4s; opacity:0; }
 
@@ -208,9 +201,8 @@
     #cake { width:260px; }
     #knife { width:100px; left:-200px; }
   }
-
   @media (max-width:520px){
-    .envelope{ height:480px; } /* allow more vertical space on narrow screens */
+    .envelope{ height:480px; }
     .envelope .letter { height:72%; top:14%; }
     .card-content h1{ font-size:20px; }
     .card-content p{ font-size:15px; }
@@ -220,18 +212,18 @@
 <body>
 
 <!-- Section 1 -->
-<section id="sec1" class="section active" aria-label="Card 1">
+<section id="sec1" class="section active" aria-label="Section 1">
   <div class="card-wrap">
     <div class="envelope" data-index="1" aria-hidden="false">
       <div class="flap" aria-hidden="true"></div>
       <div class="letter" role="article" aria-labelledby="title1">
         <div class="card-content">
           <h1 id="title1">✨ Happy Birthday, Laraib! ✨</h1>
-          <p>Laraib… aaj ka din waqai bohot khaas hai. Main dil se dua karta hoon ke yeh din aap ki zindagi me naye raaste, naye mauqe, aur bohot sari khushiyan le kar aaye.</p>
+          <p>آج کا دن آپ کے لیے روشنیوں سے بھرا ہوا ہے، Laraib—</p>
           <div class="quote">"Aaj ka din waqai bohot khaas hai."</div>
         </div>
       </div>
-      <div class="body" aria-hidden="true"></div>
+      <div class="body"></div>
     </div>
 
     <div class="controls">
@@ -242,14 +234,14 @@
 </section>
 
 <!-- Section 2 -->
-<section id="sec2" class="section" aria-label="Card 2">
+<section id="sec2" class="section" aria-label="Section 2">
   <div class="card-wrap">
     <div class="envelope" data-index="2">
       <div class="flap"></div>
       <div class="letter" role="article" aria-labelledby="title2">
         <div class="card-content">
-          <h2 id="title2">🌼 Aap Jaisi Khoobsurat Insaan</h2>
-          <p>Aap jaisi achi, pyari, seedhi aur sachi insaan ko hamesha duniya ki sab se behtareen cheezein milni chahiye. Aapka ikhlaq, lehja aur soch aap ko sab se alag banati hain.</p>
+          <h2 id="title2">Aap Jaisi Khoobsurat Insaan</h2>
+          <p>آپ کے اخلاق، آپ کی سچائی، آپ کی نرمی اور آپ کی باریک حسِ جمال-آپ اُن چند لوگوں میں سے ہیں جو چہرے سے زیادہ دل کے خوبصورت ہوتے ہیں۔</p>
           <div class="quote">"Aap jaisi achi, pyari, seedhi aur sachi insaan ko hamesha duniya ki sab se behtareen cheezein milni chahiye. Aapka ikhlaq, lehja aur soch aap ko sab se alag banati hain"</div>
         </div>
       </div>
@@ -264,16 +256,17 @@
 </section>
 
 <!-- Section 3 -->
-<section id="sec3" class="section" aria-label="Card 3">
+<section id="sec3" class="section" aria-label="Section 3">
   <div class="card-wrap">
     <div class="envelope" data-index="3">
       <div class="flap"></div>
       <div class="letter" role="article" aria-labelledby="title3">
         <div class="card-content">
-          <h2 id="title3">📸 Yaadein Jo Reh Gayi</h2>
-          <p>Mujhe abhi tak woh din yaad hai jab hum shed se wapis aa rahe thay aur barish ho rahi thi. Mere mana karne ke bawajood aap ne paani me jump kiya tha. Us moment ki khushi aur masoomiyat abhi tak yaad hai.
+          <h2 id="title3">Yaadein Jo Reh Gayi</h2>
+          <p>آآپ ہمیشہ سب کے لیے اچھا سوچنے والی، ہر ایک کے کام آنے والی، اور دوسروں کی خوشی میں خوش ہونے والی لڑکی ہیں، اور ایسے لوگ واقعی کم ہوتے ہیں۔ 
 
-Aur phir… aap ke haath ka banaya hua pulao aur custard — abhi tak uski khushboo yaad aati hai. Shayad isliye kyun ke wo dil se bana tha. Aur bhi bohot sari choti choti yaadein hain, par yeh yaadein khud hi bohot khaas hain.</p>
+"Mujhe abhi tak woh din yaad hai jab hum shed se wapis aa rahe thay aur barish ho rahi thi… aur mere mana karne ke bawajood ap ne pani me jump kiya."
+"Aur phir aap ke haath ka banaya hua pulao aur custard — abhi tak uski khushboo yaad aati hai."</p>
         </div>
       </div>
       <div class="body"></div>
@@ -287,16 +280,20 @@ Aur phir… aap ke haath ka banaya hua pulao aur custard — abhi tak uski khush
 </section>
 
 <!-- Section 4 -->
-<section id="sec4" class="section" aria-label="Card 4">
+<section id="sec4" class="section" aria-label="Section 4">
   <div class="card-wrap">
     <div class="envelope" data-index="4">
       <div class="flap"></div>
       <div class="letter" role="article" aria-labelledby="title4">
         <div class="card-content">
-          <h2 id="title4">✨ Aap Ki Aankhein</h2>
-          <p>Aap ki aankhein… woh gehra kaala rang jo sirf khoobsurat nahi balkay bohot expressive bhi hai. Jaise inme koi purani kahani, koi raaz, koi narmi chhupi ho. Kuch khoobsurtiyaan rang se nahi… rooh se hoti hain.
+          <h2 id="title4">Aap Ki Aankhein</h2>
+          <p>آپ کی آنکھیں—وہ گہرا سیاہ رنگ جو عام نہیں، ایک ایسے راز کی طرح ہے جو صرف خوبصورتی نہیں… گہرائی بھی رکھتا ہے۔ 
+
+"Aap ki aankhein woh gehra kaala rang jo na sirf khoobsurat hain balkay puri kainat in ma samai hoi ha."
+"Aap ki aankhon me koi ajeeb si khamosh chamak hai jo dekhne wale ko rok leti hai."
 
 نور ہی نور سے مکھڑے پہ وہ نوری آنکھیں
+    
 اس کے انجیل سے چہرے پہ زبوری آنکھیں</p>
         </div>
       </div>
@@ -311,14 +308,18 @@ Aur phir… aap ke haath ka banaya hua pulao aur custard — abhi tak uski khush
 </section>
 
 <!-- Section 5 -->
-<section id="sec5" class="section" aria-label="Card 5">
+<section id="sec5" class="section" aria-label="Section 5">
   <div class="card-wrap">
     <div class="envelope" data-index="5">
       <div class="flap"></div>
       <div class="letter" role="article" aria-labelledby="title5">
         <div class="card-content">
-          <h2 id="title5">🤲 Dil Se Dua</h2>
-          <p>Allah aap ke tamam goals aasaan kare. Aap jahan bhi jaayein, izzat, mohabbat aur ache log milain. Aapka dil hamesha halka aur khush rahe. Ameen.</p>
+          <h2 id="title5">Duaen & Motivation</h2>
+          <p>میں دعا کرتا ہوں کہ اللہ تعالیٰ آپ کی زندگی کو آسانیوں سے بھر دے۔</p>
+          <div class="quote">"Main dua karta hoon ke Allah aap ke tamam goals aasaan kar de."
+"Aap jahan bhi jaayein, izzat, mohabbat aur achi niyat wale log milain.Aapka dil hamesha halka aur khush rahe.Laraib… aap intelligent aur sincere hain.
+“Jahan niyat saaf hoti hai, wahan raasta ban hi jaata hai.”
+“Aap kamzor nahi — bas nazuk dil ki hain. Aur nazuk dil wale hi asli strong hote hain.”"</div>
         </div>
       </div>
       <div class="body"></div>
@@ -331,39 +332,41 @@ Aur phir… aap ke haath ka banaya hua pulao aur custard — abhi tak uski khush
   </div>
 </section>
 
-<!-- Section 6 -->
-<section id="sec6" class="section" aria-label="Card 6">
+<!-- Section 6 (End Note) -->
+<section id="sec6" class="section" aria-label="Section 6">
   <div class="card-wrap">
     <div class="envelope" data-index="6">
       <div class="flap"></div>
       <div class="letter" role="article" aria-labelledby="title6">
         <div class="card-content">
-          <h2 id="title6">💡 Motivation For You</h2>
-          <p>Laraib… aap intelligent hain aur sincere bhi. Potential bohot zyada hai. Sirf yaad rakhein: “Jahan niyat saaf hoti hai, wahan raasta ban hi jaata hai.”
+          <h2 id="title6">End Note</h2>
+          <p> اللہ آپ کو خوشیوں، مسکراہٹوں، کامیابیوں اور محبتوں سے نوازے۔ 
 
-“Aap kamzor nahi — bas nazuk dil ki hain. Aur nazuk dil wale hi asli strong hote hain.”</p>
+Happy Birthday once again, Laraib! Allah kare yeh saal aap ki zindagi ka sab se behtareen saal ho. Aap hamesha muskurayein, chamkain aur khush rahein.</p>
         </div>
       </div>
       <div class="body"></div>
     </div>
 
     <div class="controls">
-      <!-- openEnvelope(6, {startBg:true}) will start background music when this envelope is opened if you want; but user asked to start music when first envelope is opened -->
       <button class="btn" onclick="openEnvelope(6)">Open Card</button>
       <button class="btn secondary" onclick="skipOpen(6)">Skip</button>
     </div>
+
+    <!-- background music will be started by JS when first envelope is opened -->
+    <audio id="bgMusic" src="assets/ma_agar_kahon_tum_sa_haseen.mp3" loop preload="auto" aria-hidden="true"></audio>
   </div>
 </section>
 
-<!-- Section 7 (End Note & Surprise) -->
-<section id="sec7" class="section" aria-label="Card 7">
+<!-- Section 7 (Cut cake) -->
+<section id="sec7" class="section" aria-label="Section 7">
   <div class="card-wrap" style="align-items:center">
     <div class="envelope" data-index="7">
       <div class="flap"></div>
       <div class="letter" role="article" aria-labelledby="title7">
         <div class="card-content">
-          <h2 id="title7">🎂 End Note</h2>
-          <p>Happy Birthday once again, Laraib! Allah kare yeh saal aap ki zindagi ka sab se behtareen saal ho. Aap hamesha muskurayein, chamkain aur khush rahein. Aap jaisi log zindagi me gift hote hain — rare aur beautiful. 🌸✨</p>
+          <h2 id="title7">🎂 Surprise & Celebration</h2>
+          <p>Happy Birthday once again, Laraib! Enjoy the surprise — open the envelope and press "Cut Cake" to celebrate 🎉</p>
         </div>
       </div>
       <div class="body"></div>
@@ -383,15 +386,12 @@ Aur phir… aap ke haath ka banaya hua pulao aur custard — abhi tak uski khush
       <button id="cutBtn" class="btn" onclick="cutCake()">Cut Cake 🎂</button>
     </div>
 
-    <!-- background and final audios -->
-    <audio id="bgMusic" src="assets/ma_agar_kahon_tum_sa_haseen.mp3" loop preload="auto" aria-hidden="true"></audio>
     <audio id="finalMusic" src="assets/happy_birthday_song.mp3" preload="auto" aria-hidden="true"></audio>
     <audio id="sliceSound" src="assets/cake_cut.mp3" preload="auto" aria-hidden="true"></audio>
   </div>
 </section>
 
 <script>
-  // Section navigation + envelope logic
   const totalSections = 7;
   let current = 1;
   let bgStarted = false;
@@ -406,29 +406,22 @@ Aur phir… aap ke haath ka banaya hua pulao aur custard — abhi tak uski khush
     current = i;
   }
 
-  // When openEnvelope is called:
-  // - animate envelope open
-  // - start bg music only when the first envelope (index 1) is opened
-  function openEnvelope(idx, opts = {}) {
+  // Open envelope: plays bg music when first envelope (index 1) is opened.
+  function openEnvelope(idx){
     const env = document.querySelector(`#sec${idx} .envelope`);
     if(!env) return;
 
-    // Start background music when the FIRST envelope (idx === 1) is opened.
-    if(idx === 1 && !bgStarted) {
+    if(idx === 1 && !bgStarted){
       const bg = document.getElementById('bgMusic');
       if(bg){
-        bg.play().catch((err)=>{
-          // If play fails (autoplay policy), show a console warning. The user opened the envelope via click so this should typically succeed.
-          console.warn('bgMusic play failed:', err);
-        });
+        bg.play().catch(err => console.warn('bgMusic play failed:', err));
         bgStarted = true;
       }
     }
 
-    // Open the envelope visually
     env.classList.add('opened');
 
-    // Replace controls with Next after a short delay so the letter is visible first
+    // replace controls with Next button after brief delay
     const controls = env.closest('.card-wrap').querySelector('.controls');
     if(controls){
       setTimeout(()=> {
@@ -437,7 +430,6 @@ Aur phir… aap ke haath ka banaya hua pulao aur custard — abhi tak uski khush
     }
   }
 
-  // Skip opening (immediately reveal and show Next)
   function skipOpen(idx){
     const env = document.querySelector(`#sec${idx} .envelope`);
     if(env) env.classList.add('opened');
@@ -453,9 +445,7 @@ Aur phir… aap ke haath ka banaya hua pulao aur custard — abhi tak uski khush
     showSection(next);
   }
 
-  // Cake cutting sequence:
-  // - play slice sound, swap cake to sliced, play finalMusic for exactly 10 seconds, launch confetti
-  // - after 10 seconds stop finalMusic and automatically "close" final envelope
+  // Cut cake sequence: plays slice sound, swaps cake image, plays final music for 10s, then closes envelope
   function cutCake(){
     const knife = document.getElementById('knife');
     const cake = document.getElementById('cake');
@@ -464,7 +454,6 @@ Aur phir… aap ke haath ka banaya hua pulao aur custard — abhi tak uski khush
     const env = document.querySelector('#sec7 .envelope');
     const btn = document.getElementById('cutBtn');
 
-    // Animate knife in
     knife.style.opacity = '1';
     knife.style.left = '50%';
     knife.style.transform = 'translateX(-160px) rotate(-8deg)';
@@ -475,25 +464,22 @@ Aur phir… aap ke haath ka banaya hua pulao aur custard — abhi tak uski khush
       setTimeout(()=>{
         cake.src = 'assets/cake-sliced.png';
         cake.style.transform = 'scale(1)';
-      }, 240);
+      },240);
     },700);
 
-    // Play final music and confetti for 10 seconds
+    // play final music for exactly 10 seconds, then stop and close envelope
     if(final){
       final.currentTime = 0;
-      final.play().catch((e)=> console.warn('finalMusic play failed', e));
+      final.play().catch(e => console.warn('finalMusic play failed', e));
       launchConfetti(60);
-      // After 10 seconds stop music and "close" final envelope
+
       setTimeout(()=>{
         final.pause();
         final.currentTime = 0;
-        // close the envelope (flip flap back)
         if(env) env.classList.remove('opened');
-        // optionally navigate back to first section or keep on final screen closed; we'll show a short thank you overlay
         showClosingOverlay();
       }, 10000);
     } else {
-      // if no final audio, still confetti and close after 10s
       launchConfetti(60);
       setTimeout(()=>{
         if(env) env.classList.remove('opened');
@@ -501,7 +487,6 @@ Aur phir… aap ke haath ka banaya hua pulao aur custard — abhi tak uski khush
       }, 10000);
     }
 
-    // hide knife later
     setTimeout(()=>{
       knife.style.opacity = '0';
       knife.style.left = '-300px';
@@ -510,32 +495,6 @@ Aur phir… aap ke haath ka banaya hua pulao aur custard — abhi tak uski khush
     if(btn){ btn.disabled = true; btn.style.opacity = .7; }
   }
 
-  function showClosingOverlay(){
-    // A small thank-you overlay that fades in and then disappears
-    const overlay = document.createElement('div');
-    overlay.style.position = 'fixed';
-    overlay.style.inset = '0';
-    overlay.style.display = 'flex';
-    overlay.style.alignItems = 'center';
-    overlay.style.justifyContent = 'center';
-    overlay.style.background = 'rgba(0,0,0,0.45)';
-    overlay.style.color = '#fff';
-    overlay.style.zIndex = 99999;
-    overlay.style.fontSize = '28px';
-    overlay.style.fontFamily = 'Segoe UI, Roboto, Arial, sans-serif';
-    overlay.style.opacity = '0';
-    overlay.style.transition = 'opacity .5s';
-    overlay.textContent = '🎉 Thank you — Celebration complete! 🎉';
-    document.body.appendChild(overlay);
-    requestAnimationFrame(()=> overlay.style.opacity = '1');
-
-    setTimeout(()=> {
-      overlay.style.opacity = '0';
-      setTimeout(()=> overlay.remove(), 600);
-    }, 2500);
-  }
-
-  // Confetti generator
   function launchConfetti(n){
     const colors = ['#f94144','#f3722c','#f9c74f','#90be6d','#577590','#b983ff','#ffb3c6'];
     for(let i=0;i<n;i++){
@@ -561,18 +520,31 @@ Aur phir… aap ke haath ka banaya hua pulao aur custard — abhi tak uski khush
     }
   }
 
-  // Keyboard navigation: Right arrow/space to next, left to previous
-  document.addEventListener('keydown', (e)=>{
-    if(e.key === 'ArrowRight' || e.key === ' '){
-      const next = Math.min(totalSections, current + 1);
-      showSection(next);
-    } else if(e.key === 'ArrowLeft'){
-      const prev = Math.max(1, current - 1);
-      showSection(prev);
-    }
-  });
+  function showClosingOverlay(){
+    const overlay = document.createElement('div');
+    overlay.style.position = 'fixed';
+    overlay.style.inset = '0';
+    overlay.style.display = 'flex';
+    overlay.style.alignItems = 'center';
+    overlay.style.justifyContent = 'center';
+    overlay.style.background = 'rgba(0,0,0,0.45)';
+    overlay.style.color = '#fff';
+    overlay.style.zIndex = 99999;
+    overlay.style.fontSize = '24px';
+    overlay.style.fontFamily = 'Segoe UI, Roboto, Arial, sans-serif';
+    overlay.style.opacity = '0';
+    overlay.style.transition = 'opacity .5s';
+    overlay.textContent = '🎉 Thank you — Celebration complete! 🎉';
+    document.body.appendChild(overlay);
+    requestAnimationFrame(()=> overlay.style.opacity = '1');
 
-  // Initialize
+    setTimeout(()=> {
+      overlay.style.opacity = '0';
+      setTimeout(()=> overlay.remove(), 600);
+    }, 2500);
+  }
+
+  // initialize display
   (function init(){
     showSection(1);
   })();
