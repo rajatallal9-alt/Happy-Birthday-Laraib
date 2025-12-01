@@ -46,12 +46,12 @@
     font-size: 16px;
     cursor: pointer;
   }
-  /* Background colors for each section */
   #sec1 { background: linear-gradient(120deg,#a1c4fd,#c2e9fb); }
   #sec2 { background: linear-gradient(120deg,#fbc2eb,#a6c1ee); }
   #sec3 { background: linear-gradient(120deg,#fad0c4,#ffd1ff); }
   #sec4 { background: linear-gradient(120deg,#f6d365,#fda085); }
   #sec5 { background: linear-gradient(120deg,#84fab0,#8fd3f4); }
+  #sec6 { background: linear-gradient(120deg,#fbc2eb,#fcc2ff); }
 </style>
 </head>
 <body>
@@ -85,7 +85,12 @@
   <p>Allah aap ke tamam goals aasaan kare. Aap jahan bhi jaayein, izzat, mohabbat aur ache log milain. Aapka dil hamesha halka aur khush rahe.</p>
   <p>Laraib… aap intelligent hain aur sincere bhi. Sirf yaad rakhein: <strong>“Jahan niyat saaf hoti hai, wahan raasta ban hi jaata hai.”</strong></p>
   <p><strong>“Aap kamzor nahi — bas nazuk dil ki hain. Aur nazuk dil wale hi asli strong hote hain.”</strong></p>
-  <p>Happy Birthday once again! 🌸✨</p>
+  <button class="btn-next" onclick="nextSection()">Next</button>
+</div>
+
+<div id="sec6" class="section hidden">
+  <h2>🎂 End Note</h2>
+  <p>Happy Birthday once again, Laraib! Allah kare yeh saal aap ki zindagi ka sab se behtareen saal ho. Aap hamesha muskurayein, chamkain aur khush rahein. Aap jaisi log zindagi me gift hote hain — rare aur beautiful. 🌸✨</p>
 </div>
 
 <script>
@@ -94,7 +99,7 @@
     document.getElementById('sec' + current).classList.remove('active');
     document.getElementById('sec' + current).classList.add('hidden');
     current++;
-    if(current <= 5){
+    if(current <= 6){
       document.getElementById('sec' + current).classList.add('active');
       document.getElementById('sec' + current).classList.remove('hidden');
     }
@@ -103,3 +108,4 @@
 
 </body>
 </html>
+
