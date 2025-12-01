@@ -87,40 +87,43 @@ html, body {
 <div id="sec1" class="section active">
   <h1>✨ Happy Birthday, Laraib! ✨</h1>
   <p>آج کا دن آپ کے لیے روشنیوں سے بھرا ہوا ہے، Laraib—</p>
-  <div class="quote">"Aaj ka din waqai bohot khaas hai."
-<br>"Aaj ka din waqai bohot khaas hai, Laraib."</div>
+  <div class="quote">"Aaj ka din waqai bohot khaas hai."</div>
   <button class="btn-next" onclick="nextSection()">Next</button>
 </div>
 
 <div id="sec2" class="section hidden">
   <h2>Aap Jaisi Khoobsurat Insaan</h2>
   <p>آپ اُن چند لوگوں میں سے ہیں جو چہرے سے زیادہ دل کے خوبصورت ہوتے ہیں۔</p>
-  <div class="quote">"Aap jaisi achi, pyari, seedhi aur sachi insaan ko hamesha duniya ki sab se behtareen cheezein milni chahiye."
-<br>Aap jaisi achi, pyari, seedhi aur sachi insaan ko hamesha duniya ki sab se behtareen cheezein milni chahiye. Aapka ikhlaq, lehja aur soch aap ko sab se alag banati hain"</div>
+  <div class="quote">"Aap jaisi achi, pyari, seedhi aur sachi insaan ko hamesha duniya ki sab se behtareen cheezein milni chahiye. Aapka ikhlaq, lehja aur soch aap ko sab se alag banati hain"</div>
   <button class="btn-next" onclick="nextSection()">Next</button>
 </div>
 
 <div id="sec3" class="section hidden">
   <h2>Yaadein Jo Reh Gayi</h2>
   <p>آپ کے اخلاق، آپ کی سچائی، آپ کی نرمی اور آپ کی باریک حسِ جمال…</p>
-  <div class="quote">"Mujhe abhi tak woh din yaad hai jab hum shed se wapis aa rahe thay aur barish ho rahi thi."
-<br>"Mujhe abhi tak woh din yaad hai jab hum shed se wapis aa rahe thay aur barish ho rahi thi… aur mere mana karne ke bawajood ap ne pani me jump kiya."</div>
+  <div class="quote">"Mujhe abhi tak woh din yaad hai jab hum shed se wapis aa rahe thay aur barish ho rahi thi… aur mere mana karne ke bawajood ap ne pani me jump kiya."
+<br>"Aur phir aap ke haath ka banaya hua pulao aur custard — abhi tak uski khushboo yaad aati hai."</div>
   <button class="btn-next" onclick="nextSection()">Next</button>
 </div>
 
 <div id="sec4" class="section hidden">
   <h2>Aap Ki Aankhein</h2>
   <p>آپ کی آنکھیں—وہ گہرا سیاہ رنگ جو عام نہیں، ایک ایسے راز کی طرح ہے جو صرف خوبصورتی نہیں… گہرائی بھی رکھتا ہے۔</p>
-  <div class="quote">"Aap ki aankhein woh gehra kaala rang jo na sirf khoobsurat hai balkay bohot expressive bhi."
+  <div class="quote">"Aap ki aankhein woh gehra kaala rang jo na sirf khoobsurat hain balkay puri kainat in ma samai hoi ha."
 <br>"Aap ki aankhon me koi ajeeb si khamosh chamak hai jo dekhne wale ko rok leti hai."</div>
   <button class="btn-next" onclick="nextSection()">Next</button>
+  <p> نور ہی نور سے مکھڑے پہ وہ نوری آنکھیں
+
+اس کے انجیل سے چہرے پہ زبوری آنکھیں<p/>
 </div>
 
 <div id="sec5" class="section hidden">
   <h2>Duaen & Motivation</h2>
   <p>میں دعا کرتا ہوں کہ اللہ تعالیٰ آپ کی زندگی کو آسانیوں سے بھر دے۔</p>
   <div class="quote">"Main dua karta hoon ke Allah aap ke tamam goals aasaan kar de."
-<br>"Aap jahan bhi jaayein, izzat, mohabbat aur achi niyat wale log milain."</div>
+<br>"Aap jahan bhi jaayein, izzat, mohabbat aur achi niyat wale log milain.Aapka dil hamesha halka aur khush rahe.Laraib… aap intelligent aur sincere hain.
+“Jahan niyat saaf hoti hai, wahan raasta ban hi jaata hai.”
+“Aap kamzor nahi — bas nazuk dil ki hain. Aur nazuk dil wale hi asli strong hote hain.”"</div>
   <button class="btn-next" onclick="nextSection()">Next</button>
 </div>
 
