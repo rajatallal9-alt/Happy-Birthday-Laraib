@@ -157,6 +157,7 @@
     font-size:16px;
     line-height:1.45;
     color:#333;
+    white-space: pre-wrap;
   }
 
   /* Buttons */
@@ -209,8 +210,9 @@
       <div class="flap" aria-hidden="true"></div>
       <div class="letter" role="article" aria-labelledby="title1">
         <div class="card-content">
-          <h1 id="title1">✨ Happy Birthday, Laraib!</h1>
-          <p>آج کا دن آپ کے لیے روشنیوں سے بھرا ہوا ہے — aaj ka din waqai bohot khaas hai.</p>
+          <h1 id="title1">✨ Happy Birthday, Laraib! ✨</h1>
+          <p>آج کا دن آپ کے لیے روشنیوں سے بھرا ہوا ہے، Laraib—</p>
+          <div class="quote">"Aaj ka din waqai bohot khaas hai."</div>
         </div>
       </div>
       <div class="body" aria-hidden="true"></div>
@@ -231,7 +233,8 @@
       <div class="letter" role="article" aria-labelledby="title2">
         <div class="card-content">
           <h1 id="title2">🌼 Aap Jaisi Khoobsurat Insaan</h1>
-          <p>Aap jaisi achi, pyari, seedhi aur sachi insaan ko hamesha duniya ki sab se behtareen cheezein milni chahiye.</p>
+          <p>آپ کے اخلاق، آپ کی سچائی، آپ کی نرمی اور آپ کی باریک حسِ جمال-آپ اُن چند لوگوں میں سے ہیں جو چہرے سے زیادہ دل کے خوبصورت ہوتے ہیں۔</p>
+          <div class="quote">"Aap jaisi achi, pyari, seedhi aur sachi insaan ko hamesha duniya ki sab se behtareen cheezein milni chahiye. Aapka ikhlaq, lehja aur soch aap ko sab se alag banati hain"</div>
         </div>
       </div>
       <div class="body"></div>
@@ -252,7 +255,10 @@
       <div class="letter" role="article" aria-labelledby="title3">
         <div class="card-content">
           <h1 id="title3">📸 Yaadein Jo Reh Gayi</h1>
-          <p>Mujhe abhi tak woh din yaad hai jab hum shed se wapis aa rahe thay aur barish ho rahi thi. Aap ne paani me jump kiya — woh masoomiyat hamesha yaad rahegi.</p>
+          <p>آآپ ہمیشہ سب کے لیے اچھا سوچنے والی، ہر ایک کے کام آنے والی، اور دوسروں کی خوشی میں خوش ہونے والی لڑکی ہیں، اور ایسے لوگ واقعی کم ہوتے ہیں۔ 
+
+"Mujhe abhi tak woh din yaad hai jab hum shed se wapis aa rahe thay aur barish ho rahi thi… aur mere mana karne ke bawajood ap ne pani me jump kiya."
+"Aur phir aap ke haath ka banaya hua pulao aur custard — abhi tak uski khushboo yaad aati hai."</p>
         </div>
       </div>
       <div class="body"></div>
@@ -273,7 +279,13 @@
       <div class="letter" role="article" aria-labelledby="title4">
         <div class="card-content">
           <h1 id="title4">✨ Aap Ki Aankhein</h1>
-          <p>Aap ki aankhein gehra kaala rang rakhti hain — unme narmi aur kahaniyan hain jo dil ko chhoo jati hain.</p>
+          <p>آپ کی آنکھیں—وہ گہرا سیاہ رنگ جو عام نہیں، ایک ایسے راز کی طرح ہے جو صرف خوبصورتی نہیں… گہرائی بھی رکھتا ہے۔ 
+
+"Aap ki aankhein woh gehra kaala rang jo na sirf khoobsurat hain balkay puri kainat in ma samai hoi ha."
+"Aap ki aankhon me koi ajeeb si khamosh chamak hai jo dekhne wale ko rok leti hai."
+
+نور ہی نور سے مکھڑے پہ وہ نوری آنکھیں
+اس کے انجیل سے چہرے پہ زبوری آنکھیں</p>
         </div>
       </div>
       <div class="body"></div>
@@ -293,8 +305,12 @@
       <div class="flap"></div>
       <div class="letter" role="article" aria-labelledby="title5">
         <div class="card-content">
-          <h1 id="title5">🤲 Duaen & Motivation</h1>
-          <p>Main dua karta hoon ke Allah aap ke tamam goals aasaan kare. Jahan niyat saaf hoti hai, wahan raasta ban hi jaata hai.</p>
+          <h1 id="title5">Duaen & Motivation</h1>
+          <p>میں دعا کرتا ہوں کہ اللہ تعالیٰ آپ کی زندگی کو آسانیوں سے بھر دے۔</p>
+          <div class="quote">"Main dua karta hoon ke Allah aap ke tamam goals aasaan kar de."
+"Aap jahan bhi jaayein, izzat, mohabbat aur achi niyat wale log milain.Aapka dil hamesha halka aur khush rahe.Laraib… aap intelligent aur sincere hain.
+“Jahan niyat saaf hoti hai, wahan raasta ban hi jaata hai.”
+“Aap kamzor nahi — bas nazuk dil ki hain. Aur nazuk dil wale hi asli strong hote hain.”"</div>
         </div>
       </div>
       <div class="body"></div>
@@ -307,15 +323,17 @@
   </div>
 </section>
 
-<!-- Section 6 (End Note, will start bg music when opened) -->
+<!-- Section 6 -->
 <section id="sec6" class="section" aria-label="Card 6">
   <div class="card-wrap">
     <div class="envelope" data-index="6">
       <div class="flap"></div>
       <div class="letter" role="article" aria-labelledby="title6">
         <div class="card-content">
-          <h1 id="title6">🎂 End Note</h1>
-          <p>Happy Birthday once again, Laraib! Allah kare yeh saal aap ki zindagi ka sab se behtareen saal ho. Aap hamesha muskurayein.</p>
+          <h1 id="title6">End Note</h1>
+          <p>اللہ آپ کو خوشیوں، مسکراہٹوں، کامیابیوں اور محبتوں سے نوازے۔ 
+
+Happy Birthday once again, Laraib! Allah kare yeh saal aap ki zindagi ka sab se behtareen saal ho. Aap hamesha muskurayein, chamkain aur khush rahein.</p>
         </div>
       </div>
       <div class="body"></div>
@@ -325,9 +343,9 @@
       <button class="btn" onclick="openEnvelope(6, {startBg:true})">Open Card</button>
       <button class="btn secondary" onclick="skipOpen(6)">Skip</button>
     </div>
-  </div>
 
-  <audio id="bgMusic" src="assets/ma_agar_kahon_tum_sa_haseen.mp3" loop preload="auto" aria-hidden="true"></audio>
+    <audio id="bgMusic" src="assets/ma_agar_kahon_tum_sa_haseen.mp3" loop preload="auto" aria-hidden="true"></audio>
+  </div>
 </section>
 
 <!-- Final Section with cake & cut -->
@@ -337,8 +355,8 @@
       <div class="flap"></div>
       <div class="letter" role="article" aria-labelledby="title7">
         <div class="card-content">
-          <h1 id="title7">🎉 Surprise!</h1>
-          <p>Click <strong>Open</strong> and then press <strong>Cut Cake</strong> to celebrate 🎂</p>
+          <h1 id="title7">🎂 Surprise & Celebration</h1>
+          <p>Happy Birthday once again, Laraib! Enjoy the surprise — open the envelope and cut the cake to celebrate 🎉</p>
         </div>
       </div>
       <div class="body"></div>
@@ -384,11 +402,11 @@
   function openEnvelope(idx, opts = {}){
     const env = document.querySelector(`#sec${idx} .envelope`);
     if(!env) return;
-    // start background music if requested
+    // start background music if requested (for section 6)
     if(opts.startBg && !bgStarted){
       const bg = document.getElementById('bgMusic');
       if(bg){
-        bg.play().catch(()=>{}); // user gesture should allow play
+        bg.play().catch(()=>{});
         bgStarted = true;
       }
     }
@@ -420,7 +438,6 @@
     let next = fromIdx + 1;
     if(next > totalSections) next = totalSections;
     showSection(next);
-    // If landing page has bg music element and not started, we won't autoplay unless user opens
   }
 
   // Final section: cake cutting
@@ -490,25 +507,21 @@
   // Keyboard navigation: when letter already opened, Next arrow moves forward
   document.addEventListener('keydown', (e)=>{
     if(e.key === 'ArrowRight' || e.key === ' '){
-      // find if current section has a Next button visible
       const controls = document.querySelector(`#sec${current} .controls`);
       if(controls && controls.querySelector('button')){
         controls.querySelector('button').click();
       } else {
-        // otherwise try to open envelope
         const openBtn = document.querySelector(`#sec${current} .controls .btn`);
         if(openBtn) openBtn.click();
       }
     }
     if(e.key === 'ArrowLeft'){
-      // go previous
       const prev = Math.max(1, current-1);
       showSection(prev);
     }
   });
 
-  // Ensure the first section's "Open" is ready (already visible by markup)
-  // Helper: if the user reloads, ensure only one section active
+  // Initialize
   (function init(){
     showSection(1);
   })();
