@@ -22,20 +22,30 @@
     overflow:hidden;
   }
 
-  /* Generic layout for full-screen sections */
+  /* Layout for scrolling on mobile */
   .section {
     position:absolute;
     inset:0;
     display:flex;
-    justify-content:center;
-    align-items:center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Start from top to allow scrolling */
     padding:20px;
     box-sizing:border-box;
     opacity:0;
     transform: translateY(24px);
     transition: opacity .45s ease, transform .45s ease;
     pointer-events:none;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: 1;
   }
+  
+  /* Center Section 8 specifically since it has no envelope */
+  #sec8.section {
+      justify-content: center; /* Center cake vertically */
+  }
+
   .section.active{
     opacity:1;
     transform: translateY(0);
@@ -51,7 +61,9 @@
     flex-direction:column;
     align-items:center;
     gap:18px;
-    position: relative; /* Needed for absolute positioning of celebration text */
+    position: relative;
+    margin: auto;
+    padding-bottom: 40px;
   }
 
   /* ENVELOPE */
@@ -171,6 +183,7 @@
     display:flex;
     gap:12px;
     margin-top:8px;
+    z-index: 10;
   }
   .btn{
     appearance:none;
@@ -201,11 +214,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 250px; /* Reserve height for cake */
+      height: 300px; 
+      margin-top: 20px;
+      margin-bottom: 20px;
   }
 
   #cake { 
-      max-width:40%; 
+      max-width:80%; 
       width:320px; 
       transition: transform .2s ease; 
       border-radius:14px; 
@@ -216,15 +231,13 @@
       width:130px; 
       position:absolute; 
       z-index: 5;
-      left:-200px; /* Start off screen */
+      left:-200px;
       top:10%; 
       transform: rotate(-15deg);
-      /* We will handle transitions in JS or use classes */
       transition: all 0.5s ease-out;
       opacity: 0;
   }
 
-  /* NEW: Celebration Text Style */
   #celebrationText {
     position: absolute;
     top: 50%;
@@ -236,11 +249,11 @@
     font-weight: bold;
     color: var(--accent-1);
     text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.9), 0px 4px 12px rgba(139,46,255,0.3);
-    opacity: 0; /* Hidden initially */
+    opacity: 0;
     z-index: 10;
     pointer-events: none;
     transition: opacity 1.5s ease-in-out;
-    background: rgba(255,255,255,0.85); /* Slight bg to make text readable over cake */
+    background: rgba(255,255,255,0.85); 
     padding: 20px 0;
     border-radius: 20px;
     backdrop-filter: blur(4px);
@@ -256,12 +269,15 @@
     #knife { width:100px; }
     #celebrationText { font-size: 2rem; }
   }
+
   @media (max-width:520px){
-    .envelope{ height:480px; }
-    .envelope .letter { height:72%; top:14%; }
+    .envelope{ height:360px; }
+    .envelope .letter { height:70%; top:15%; }
     .card-content h1{ font-size:20px; }
     .card-content p{ font-size:15px; }
     #celebrationText { font-size: 1.8rem; }
+    #cake-container { height: 220px; }
+    #cake { width: 220px; }
   }
 </style>
 </head>
@@ -414,7 +430,7 @@ Happy Birthday once again, Laraib! Allah kare yeh saal aap ki zindagi ka sab se 
       <div class="letter" role="article" aria-labelledby="title7">
         <div class="card-content">
           <h2 id="title7">🎂 Surprise & Celebration</h2>
-          <p>Happy Birthday once again, Laraib! Enjoy the surprise — open the envelope and press "Cut Cake" to celebrate 🎉</p>
+          <p>Happy Birthday once again, Laraib! Enjoy the surprise — press "Next" to cut the cake 🎉</p>
         </div>
       </div>
       <div class="body"></div>
@@ -424,24 +440,31 @@ Happy Birthday once again, Laraib! Allah kare yeh saal aap ki zindagi ka sab se 
       <button class="btn" onclick="openEnvelope(7)">Open Card</button>
       <button class="btn secondary" onclick="skipOpen(7)">Skip</button>
     </div>
-
-    <div id="cake-container">
-      <img id="knife" src="assets/knife.png" alt="" aria-hidden="true" />
-      <img id="cake" src="assets/cake.png" alt="Birthday cake" />
-      <h1 id="celebrationText">Happy Birthday Laraib!</h1>
-    </div>
-
-    <div style="margin-top:16px;">
-      <button id="cutBtn" class="btn" onclick="cutCake()">Cut Cake 🎂</button>
-    </div>
-
-    <audio id="finalMusic" src="assets/happy_birthday_song.mp3" preload="auto" aria-hidden="true"></audio>
-    <audio id="sliceSound" src="assets/cake_cut.mp3" preload="auto" aria-hidden="true"></audio>
   </div>
 </section>
 
+<section id="sec8" class="section" aria-label="Section 8">
+    <div class="card-wrap" style="align-items:center">
+        <h2 style="color:var(--accent-2); margin-bottom:10px;">Let's Cut the Cake!</h2>
+
+        <div id="cake-container">
+            <img id="knife" src="assets/knife.png" alt="" aria-hidden="true" />
+            <img id="cake" src="assets/cake.png" alt="Birthday cake" />
+            <h1 id="celebrationText">Happy Birthday Laraib!</h1>
+        </div>
+    
+        <div style="margin-top:20px; padding-bottom: 20px;">
+            <button id="cutBtn" class="btn" onclick="cutCake()">Cut Cake 🎂</button>
+        </div>
+    
+        <audio id="finalMusic" src="assets/happy_birthday_song.mp3" preload="auto" aria-hidden="true"></audio>
+        <audio id="sliceSound" src="assets/cake_cut.mp3" preload="auto" aria-hidden="true"></audio>
+    </div>
+</section>
+
 <script>
-  const totalSections = 7;
+  // UPDATED to 8 sections
+  const totalSections = 8;
   let current = 1;
   let bgStarted = false;
 
@@ -494,7 +517,7 @@ Happy Birthday once again, Laraib! Allah kare yeh saal aap ki zindagi ka sab se 
     showSection(next);
   }
 
-  // UPDATED Cut cake sequence
+  // Cut cake sequence
   function cutCake(){
     const knife = document.getElementById('knife');
     const cake = document.getElementById('cake');
@@ -515,21 +538,20 @@ Happy Birthday once again, Laraib! Allah kare yeh saal aap ki zindagi ka sab se 
       final.play().catch(e => console.warn('finalMusic play failed', e));
     }
 
-    // 3. Reveal Celebration Text (Fading way)
+    // 3. Reveal Celebration Text
     celebrationText.style.opacity = '1';
 
     // 4. Knife Animation Sequence
-    
-    // Step A: Bring knife to position (Slide in)
+    // Step A: Bring knife to position
     knife.style.opacity = '1';
     knife.style.left = '50%';
-    knife.style.transform = 'translate(-50%, -80px) rotate(-15deg)'; // Hover above
+    knife.style.transform = 'translate(-50%, -80px) rotate(-15deg)'; 
 
     setTimeout(() => {
-        // Step B: The Cut Action (Move Down)
+        // Step B: The Cut Action
         knife.style.transform = 'translate(-50%, 20px) rotate(-5deg)';
         
-        // Step C: Swap Cake Image slightly after cut starts
+        // Step C: Swap Cake Image
         setTimeout(()=>{
             cake.style.transform = 'scale(.96)';
             setTimeout(()=>{
@@ -538,33 +560,24 @@ Happy Birthday once again, Laraib! Allah kare yeh saal aap ki zindagi ka sab se 
             }, 100);
         }, 200);
 
-        // Step D: Move knife away (Slide out)
+        // Step D: Move knife away
         setTimeout(() => {
             knife.style.opacity = '0';
-            knife.style.left = '120%'; // Fly off screen right
+            knife.style.left = '120%';
         }, 1500);
 
-    }, 600); // Delay before cutting down
+    }, 600);
 
     // 5. Confetti
     launchConfetti(80);
 
     // 6. 10 Second Timer to Stop Everything
     setTimeout(()=>{
-      // Fade out text
       celebrationText.style.opacity = '0';
-      
-      // Stop music
       if(final){
         final.pause();
         final.currentTime = 0;
       }
-      
-      // Close envelope animation
-      const env = document.querySelector('#sec7 .envelope');
-      if(env) env.classList.remove('opened');
-      
-      // Show closing overlay
       showClosingOverlay();
     }, 10000);
   }
@@ -621,7 +634,6 @@ Happy Birthday once again, Laraib! Allah kare yeh saal aap ki zindagi ka sab se 
     }, 4000);
   }
 
-  // initialize display
   (function init(){
     showSection(1);
   })();
