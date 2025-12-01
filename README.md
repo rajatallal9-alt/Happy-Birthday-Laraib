@@ -96,7 +96,7 @@ html, body {
   <h2>Aap Jaisi Khoobsurat Insaan</h2>
   <p>آپ اُن چند لوگوں میں سے ہیں جو چہرے سے زیادہ دل کے خوبصورت ہوتے ہیں۔</p>
   <div class="quote">"Aap jaisi achi, pyari, seedhi aur sachi insaan ko hamesha duniya ki sab se behtareen cheezein milni chahiye."
-<br>"Aap jaisi achi, pyari, seedhi, aur sachi insaan ko hamesha duniya ki sab se behtareen cheezein milni chahiye."</div>
+<br>Aap jaisi achi, pyari, seedhi aur sachi insaan ko hamesha duniya ki sab se behtareen cheezein milni chahiye. Aapka ikhlaq, lehja aur soch aap ko sab se alag banati hain"</div>
   <button class="btn-next" onclick="nextSection()">Next</button>
 </div>
 
