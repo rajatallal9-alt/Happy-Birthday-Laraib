@@ -24,6 +24,16 @@
     color:#222;
     overflow:hidden;
   }
+  
+  /* Confetti Styles */
+  .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 9999;
+  }
 
   /* Layout for scrolling on mobile */
   .section {
@@ -57,7 +67,7 @@
   }
 
   /* ------------------------------------------------ */
-  /* NEW INTRO DOOR STYLES */
+  /* INTRO DOOR STYLES */
   /* ------------------------------------------------ */
   #intro {
       background: linear-gradient(180deg, #ffd9eb 0%, #ffffff 100%);
@@ -258,19 +268,19 @@
   .btn{
     appearance:none;
     border:0;
-    padding:12px 22px; /* Increased padding */
-    border-radius:12px; /* Increased corner radius */
+    padding:12px 22px; 
+    border-radius:12px; 
     background:linear-gradient(90deg,var(--accent-1), #800080);
     color:#fff;
     cursor:pointer;
-    font-size:18px; /* Increased font size */
+    font-size:18px; 
     box-shadow: 0 6px 18px rgba(255, 105, 180, 0.3);
   }
   .btn.secondary{
     background:transparent;
     color:var(--accent-2);
     box-shadow:none;
-    border:2px solid rgba(75,46,131,0.2); /* Slightly thicker border */
+    border:2px solid rgba(75,46,131,0.2); 
   }
   .btn:disabled {
       opacity: 0.5;
@@ -278,7 +288,7 @@
   }
   
   /* ------------------------------------------------ */
-  /* CAKE AND KNIFE STYLES (Guaranteed Centering) */
+  /* CAKE STYLES (Guaranteed Centering) */
   /* ------------------------------------------------ */
   #cake-container {
       position: relative;
@@ -295,16 +305,6 @@
       transition: transform .2s ease; 
       border-radius:14px; 
       z-index: 2;
-  }
-  #knife { 
-      width:130px; 
-      position:absolute; 
-      z-index: 5;
-      left:-200px; 
-      top:10%; 
-      transform: rotate(-15deg);
-      transition: all 0.5s ease-out;
-      opacity: 0;
   }
   
   /* Celebration Text and Glow */
@@ -365,7 +365,7 @@
         <div class="door right"></div>
         <h1 class="greeting-text">Welcome, Laraib!</h1>
     </div>
-    </section>
+</section>
 
 <section id="sec2" class="section" aria-label="Section 2">
   <div class="card-wrap">
@@ -467,7 +467,7 @@
         <div class="card-content">
           <h2 id="title6">Duaen & Motivation</h2>
           <p>میں دعا کرتا ہوں کہ اللہ تعالیٰ آپ کی زندگی کو آسانیوں سے بھر دے۔</p>
-          <div class="quote">"Main dua karta hoon ke Allah aap ke tamam goals aasaan kar de."
+          <div class="quote">"Main dua karta hoon ke Allah aap ke तमाम goals aasaan kar de."
 "Aap jahan bhi jaayein, izzat, mohabbat aur achi niyat wale log milain.Aapka dil hamesha halka aur khush rahe.Laraib… aap intelligent aur sincere hain.
 “Jahan niyat saaf hoti hai, wahan raasta ban hi jaata hai.”
 “Aap kamzor nahi — bas nazuk dil ki hain. Aur nazuk dil wale hi asli strong hote hain.”"</div>
@@ -532,7 +532,6 @@ Happy Birthday once again, Laraib! Allah kare yeh saal aap ki zindagi ka sab se 
         <h2 style="color:var(--accent-2); margin-bottom:10px;">Let's Cut the Cake!</h2>
 
         <div id="cake-container">
-            <img id="knife" src="assets/knife.png" alt="" aria-hidden="true" />
             <img id="cake" src="assets/cake.png" alt="Birthday cake" />
             <h1 id="celebrationText">Happy Birthday Laraib!</h1>
         </div>
@@ -547,10 +546,11 @@ Happy Birthday once again, Laraib! Allah kare yeh saal aap ki zindagi ka sab se 
 </section>
 
 <script>
-  // Total sections now 9 (Intro + 7 Envelopes + Cake)
   const totalSections = 9;
   let current = 1; 
   let bgStarted = false;
+  let confettiLoopTimer = null; // To hold the interval for continuous confetti
+  const CELEBRATION_DURATION = 10000; // 10 seconds
 
   function showSection(i){
     // Determine the element ID (intro for 1, secX for others)
@@ -568,10 +568,9 @@ Happy Birthday once again, Laraib! Allah kare yeh saal aap ki zindagi ka sab se 
   function openDoor(){
     const doorContainer = document.querySelector('#intro .door-container');
     
-    // 1. Start Music (This should be allowed by the browser since it's user-initiated on load, though we'll keep the promise check)
+    // 1. Start Music 
     const bg = document.getElementById('bgMusic');
     if(bg && !bgStarted){
-      // Added a promise check/catch for better browser support
       bg.play().catch(err => console.warn('bgMusic play failed:', err));
       bgStarted = true;
     }
@@ -579,20 +578,18 @@ Happy Birthday once again, Laraib! Allah kare yeh saal aap ki zindagi ka sab se 
     // 2. Open the doors (CSS animation)
     doorContainer.classList.add('door-open');
     
-    // 3. Proceed to the first envelope (Section 2) after the animation delay
+    // 3. Proceed to the first envelope (Section 2)
     setTimeout(() => {
         showSection(2); 
     }, 2200); 
   }
 
-  // Open envelope
   function openEnvelope(idx){
     const env = document.querySelector(`#sec${idx} .envelope`);
     if(!env) return;
 
     env.classList.add('opened');
 
-    // replace controls
     const controls = env.closest('.card-wrap').querySelector('.controls');
     if(controls){
       setTimeout(()=> {
@@ -616,9 +613,7 @@ Happy Birthday once again, Laraib! Allah kare yeh saal aap ki zindagi ka sab se 
     showSection(next);
   }
 
-  // Cut cake sequence 
   function cutCake(){
-    const knife = document.getElementById('knife');
     const cake = document.getElementById('cake');
     const slice = document.getElementById('sliceSound');
     const final = document.getElementById('finalMusic');
@@ -636,39 +631,42 @@ Happy Birthday once again, Laraib! Allah kare yeh saal aap ki zindagi ka sab se 
 
     celebrationText.style.opacity = '1';
 
-    knife.style.opacity = '1';
-    knife.style.left = '50%';
-    knife.style.transform = 'translate(-50%, -80px) rotate(-15deg)'; 
-
-    setTimeout(() => {
-        knife.style.transform = 'translate(-50%, 20px) rotate(-5deg)';
-        
+    // Cake slice animation (no knife involved)
+    setTimeout(()=>{
+        cake.style.transform = 'scale(.96)';
         setTimeout(()=>{
-            cake.style.transform = 'scale(.96)';
-            setTimeout(()=>{
-                cake.src = 'assets/cake-sliced.png';
-                cake.style.transform = 'scale(1)';
-            }, 100);
-        }, 200);
-
-        setTimeout(() => {
-            knife.style.opacity = '0';
-            knife.style.left = '120%';
-        }, 1500);
-
+            // Replace with sliced image
+            cake.src = 'assets/cake-sliced.png';
+            cake.style.transform = 'scale(1)';
+        }, 100);
     }, 600);
 
-    launchConfetti(250);
 
-    // 14 Second Timer to Stop Everything
+    // Start continuous confetti loop
+    startConfettiLoop();
+
+    // End celebration after CELEBRATION_DURATION
     setTimeout(()=>{
+      // Clear confetti loop
+      clearInterval(confettiLoopTimer); 
+
       celebrationText.style.opacity = '0';
       if(final){
         final.pause();
         final.currentTime = 0;
       }
       showClosingOverlay();
-    }, 14000); 
+    }, CELEBRATION_DURATION); 
+  }
+
+  function startConfettiLoop() {
+    // Launch initial burst
+    launchConfetti(80);
+
+    // Set interval to launch small bursts every 500ms
+    confettiLoopTimer = setInterval(() => {
+        launchConfetti(20); 
+    }, 500);
   }
 
   function launchConfetti(n){
@@ -684,7 +682,8 @@ Happy Birthday once again, Laraib! Allah kare yeh saal aap ki zindagi ka sab se 
       el.style.borderRadius = (Math.random()>0.5? '2px':'50%');
       el.style.opacity = 1;
       el.style.transform = `rotate(${Math.random()*360}deg)`;
-      el.style.transition = `transform ${1.8 + Math.random()*1.4}s linear, top ${1.8 + Math.random()*1.4}s linear, opacity 1s ease`;
+      // Speed/duration adjusted slightly for continuous drop
+      el.style.transition = `transform ${2.5 + Math.random()*1.5}s linear, top ${2.5 + Math.random()*1.5}s linear, opacity 1s ease`;
       document.body.appendChild(el);
 
       setTimeout(()=>{
