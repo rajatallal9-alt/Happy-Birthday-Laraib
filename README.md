@@ -90,12 +90,14 @@
 
   .door.left {
       left: 0;
-      transform: translateX(-50%) rotateY(0deg);
+      /* Ensures the door parts are perfectly side-by-side */
+      transform: translateX(-50%) rotateY(0deg); 
   }
 
   .door.right {
       right: 0;
-      transform: translateX(50%) rotateY(0deg);
+      /* Ensures the door parts are perfectly side-by-side */
+      transform: translateX(50%) rotateY(0deg); 
   }
 
   .door-open .door.left {
@@ -119,10 +121,6 @@
   }
   .door-open .greeting-text {
       opacity: 1;
-  }
-
-  .intro-controls {
-      margin-top: 20px;
   }
 
 
@@ -149,13 +147,110 @@
     perspective: 1400px;
   }
 
-  .envelope .flap {
-    background: linear-gradient(180deg,var(--accent-1), #ff99c8); /* Brighter Flap */
-    box-shadow: 0 12px 40px rgba(255, 105, 180, 0.18);
-    /* ... other flap styles ... */
+  .envelope .body {
+    position:absolute;
+    inset:0;
+    border-radius:12px;
+    background: linear-gradient(180deg, #fff, #fff7fb);
+    box-shadow: 0 18px 60px rgba(20,10,60,0.16);
+    overflow:visible;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:28px;
+    box-sizing:border-box;
   }
 
-  /* BUTTON SIZE INCREASED HERE */
+  .envelope .flap {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:58%;
+    transform-origin: top center;
+    background: linear-gradient(180deg,var(--accent-1), #ff99c8); /* Brighter Flap */
+    border-top-left-radius:14px;
+    border-top-right-radius:14px;
+    box-shadow: 0 12px 40px rgba(255, 105, 180, 0.18);
+    transform-style: preserve-3d;
+    transition: transform .8s cubic-bezier(.2,.9,.3,1);
+    backface-visibility: hidden;
+    z-index:8;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+  }
+  
+  .envelope .flap::after{
+    content:"";
+    display:block;
+    width:78%;
+    height:26px;
+    margin-bottom:22px;
+    background: linear-gradient(90deg, rgba(75,46,131,0.08), rgba(139,46,255,0.12));
+    border-radius:6px;
+    opacity:.95;
+  }
+  
+  .envelope .letter {
+    position:absolute;
+    left:6%;
+    width:88%;
+    height:72%;
+    top:16%;
+    background: linear-gradient(180deg,#fff,#fffefc);
+    border-radius:8px;
+    box-shadow: 0 8px 30px rgba(30,10,60,0.06);
+    transform-origin: bottom center;
+    transform: translateY(28px) scale(.98);
+    opacity:0;
+    transition: transform .8s cubic-bezier(.2,.9,.3,1), opacity .6s;
+    padding:22px;
+    box-sizing:border-box;
+    z-index:6;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:flex-start;
+    overflow:auto;
+    scrollbar-width: thin;
+  }
+
+  .envelope.opened .flap {
+    transform: rotateX(-180deg) translateY(-6%);
+  }
+  .envelope.opened .letter {
+    transform: translateY(-6px) scale(1);
+    opacity:1;
+  }
+  
+  .card-content{
+    width:100%;
+    color:var(--accent-2);
+    text-align:left;
+  }
+  .card-content h1,
+  .card-content h2 {
+    margin:0 0 8px 0;
+    font-size:22px;
+    color:var(--accent-2);
+    text-align:center;
+    width:100%;
+  }
+  .card-content p{
+    margin:0 0 12px 0;
+    font-size:18px;
+    line-height:1.55;
+    color:#222;
+    white-space: pre-wrap;
+  }
+  .quote{
+    margin-top:8px;
+    font-style:italic;
+    color:#333;
+    text-align:left;
+  }
+  
   .controls{
     display:flex;
     gap:12px;
@@ -184,17 +279,14 @@
       cursor: not-allowed;
   }
   
-  /* ... (Keep other envelope, letter, content styles the same) ... */
-
-
   /* ------------------------------------------------ */
-  /* CAKE AND KNIFE STYLES (Large Size Maintained) */
+  /* CAKE AND KNIFE STYLES (Large Size Maintained & Centered) */
   /* ------------------------------------------------ */
   #cake-container {
       position: relative;
       width: 100%;
       display: flex;
-      justify-content: center;
+      justify-content: center; /* Center cake horizontally */
       align-items: center;
       height: 450px; 
       margin-top: 20px;
@@ -207,6 +299,18 @@
       border-radius:14px; 
       z-index: 2;
   }
+  #knife { 
+      width:130px; 
+      position:absolute; 
+      z-index: 5;
+      left:-200px; /* Hidden off-screen */
+      top:10%; 
+      transform: rotate(-15deg);
+      transition: all 0.5s ease-out;
+      opacity: 0;
+  }
+  
+  /* Celebration Text and Glow */
   @keyframes pulseGlow {
       from { text-shadow: 0 0 10px var(--accent-1), 0 0 20px var(--accent-1); }
       to { text-shadow: 0 0 20px var(--accent-1), 0 0 30px #fff; }
@@ -215,7 +319,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); /* Perfect centering */
     width: 100%;
     text-align: center;
     font-size: 3.5rem; 
@@ -241,7 +345,7 @@
     #cake { width:380px; } 
     #cake-container { height: 400px; } 
     #celebrationText { font-size: 2.5rem; }
-    .btn { padding: 10px 18px; font-size: 16px; } /* Adjust buttons back for smaller screens */
+    .btn { padding: 10px 18px; font-size: 16px; }
   }
 
   @media (max-width:520px){
@@ -252,7 +356,7 @@
     #celebrationText { font-size: 2rem; }
     #cake-container { height: 300px; } 
     #cake { width: 280px; } 
-    .btn { padding: 10px 18px; font-size: 16px; } /* Adjust buttons back for smaller screens */
+    .btn { padding: 10px 18px; font-size: 16px; }
   }
 </style>
 </head>
@@ -264,11 +368,7 @@
         <div class="door right"></div>
         <h1 class="greeting-text">Welcome, Laraib!</h1>
     </div>
-
-    <div class="intro-controls">
-        <button class="btn" id="openDoorBtn" onclick="openDoor()">Enter The Birthday Surprise!</button>
-    </div>
-</section>
+    </section>
 
 <section id="sec2" class="section" aria-label="Section 2">
   <div class="card-wrap">
@@ -370,7 +470,7 @@
         <div class="card-content">
           <h2 id="title6">Duaen & Motivation</h2>
           <p>میں دعا کرتا ہوں کہ اللہ تعالیٰ آپ کی زندگی کو آسانیوں سے بھر دے۔</p>
-          <div class="quote">"Main dua karta hoon ke Allah aap ke तमाम goals aasaan kar de."
+          <div class="quote">"Main dua karta hoon ke Allah aap ke tamam goals aasaan kar de."
 "Aap jahan bhi jaayein, izzat, mohabbat aur achi niyat wale log milain.Aapka dil hamesha halka aur khush rahe.Laraib… aap intelligent aur sincere hain.
 “Jahan niyat saaf hoti hai, wahan raasta ban hi jaata hai.”
 “Aap kamzor nahi — bas nazuk dil ki hain. Aur nazuk dil wale hi asli strong hote hain.”"</div>
@@ -450,15 +550,13 @@ Happy Birthday once again, Laraib! Allah kare yeh saal aap ki zindagi ka sab se 
 </section>
 
 <script>
-  // UPDATED: Total sections now 9 (Intro + 7 Envelopes + Cake)
+  // Total sections now 9 (Intro + 7 Envelopes + Cake)
   const totalSections = 9;
-  let current = 1; // Current section is the Intro
+  let current = 1; 
   let bgStarted = false;
 
   function showSection(i){
-    // Since sections are now 2 through 9, map the old index to the new element ID
-    const elementId = i === 1 ? 'intro' : 'sec' + i;
-
+    // Determine the element ID (intro for 1, secX for others)
     for(let s=1;s<=totalSections;s++){
       const id = s === 1 ? 'intro' : 'sec' + s;
       const el = document.getElementById(id);
@@ -469,28 +567,24 @@ Happy Birthday once again, Laraib! Allah kare yeh saal aap ki zindagi ka sab se 
     current = i;
   }
 
-  // NEW FUNCTION: Open Door and Start Music
+  // AUTOMATIC FUNCTION: Open Door and Start Music/Transition
   function openDoor(){
     const doorContainer = document.querySelector('#intro .door-container');
-    const introControls = document.querySelector('#intro .intro-controls');
     
-    // 1. Open the doors (CSS animation)
-    doorContainer.classList.add('door-open');
-    
-    // 2. Start Music
+    // 1. Start Music (This should be allowed by the browser since it's user-initiated on load, though we'll keep the promise check)
     const bg = document.getElementById('bgMusic');
     if(bg && !bgStarted){
-      // Ensure the button is disabled to prevent multiple clicks
-      document.getElementById('openDoorBtn').disabled = true;
       bg.play().catch(err => console.warn('bgMusic play failed:', err));
       bgStarted = true;
     }
     
-    // 3. Hide button and proceed to first envelope (Section 2) after animation
+    // 2. Open the doors (CSS animation)
+    doorContainer.classList.add('door-open');
+    
+    // 3. Proceed to the first envelope (Section 2) after the animation delay
     setTimeout(() => {
-        if(introControls) introControls.innerHTML = '';
         showSection(2); 
-    }, 2000); // 2 seconds delay for door animation and greeting
+    }, 2000); // 2 seconds delay for door animation and greeting visibility
   }
 
   // Open envelope
@@ -524,7 +618,7 @@ Happy Birthday once again, Laraib! Allah kare yeh saal aap ki zindagi ka sab se 
     showSection(next);
   }
 
-  // Cut cake sequence (REMAINS SAME, CONFETTI COUNT INCREASED)
+  // Cut cake sequence 
   function cutCake(){
     const knife = document.getElementById('knife');
     const cake = document.getElementById('cake');
@@ -566,7 +660,6 @@ Happy Birthday once again, Laraib! Allah kare yeh saal aap ki zindagi ka sab se 
 
     }, 600);
 
-    // Confetti - MASSIVE INCREASE
     launchConfetti(250);
 
     // 10 Second Timer to Stop Everything
@@ -633,8 +726,9 @@ Happy Birthday once again, Laraib! Allah kare yeh saal aap ki zindagi ka sab se 
   }
 
   (function init(){
-    // Start on the Intro section (which is technically section 1 now)
     showSection(1);
+    // Automatic start after a very small delay to ensure CSS loads
+    setTimeout(openDoor, 50); 
   })();
 </script>
 </body>
