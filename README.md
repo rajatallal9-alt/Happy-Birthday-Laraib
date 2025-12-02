@@ -660,7 +660,7 @@ Happy Birthday once again, Laraib! Allah kare yeh saal aap ki zindagi ka sab se 
 
     launchConfetti(250);
 
-    // 10 Second Timer to Stop Everything
+    // 14 Second Timer to Stop Everything
     setTimeout(()=>{
       celebrationText.style.opacity = '0';
       if(final){
@@ -668,7 +668,7 @@ Happy Birthday once again, Laraib! Allah kare yeh saal aap ki zindagi ka sab se 
         final.currentTime = 0;
       }
       showClosingOverlay();
-    }, 10000); 
+    }, 14000); 
   }
 
   function launchConfetti(n){
