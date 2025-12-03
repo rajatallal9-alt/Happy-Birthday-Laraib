@@ -577,6 +577,16 @@ Happy Birthday once again, Laraib! Allah kare yeh saal aap ki zindagi ka sab se 
             }
         });
         current = i;
+      // --- NEW ANALYTICS EVENT: Track Section View ---
+        if (typeof gtag === 'function') {
+            gtag('event', 'section_view', {
+                'event_category': 'Navigation',
+                'event_label': 'Section ' + i + ' Shown',
+                'value': i
+            });
+        }
+        // ------------------------------------------------
+    }
     }
 
     // Tries to start the background music
