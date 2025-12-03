@@ -586,7 +586,6 @@ Happy Birthday once again, Laraib! Allah kare yeh saal aap ki zindagi ka sab se 
                 'value': i
             });
         }
-        // ------------------------------------------------
     }
 
     // Tries to start the background music
