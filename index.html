@@ -4,6 +4,14 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Happy Birthday Laraib — Card</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WC8VS102L1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WC8VS102L1');
+</script>
 <style>
     /* UPDATED COLOR THEME (Brighter Pink/Gold for Birthday) */
     :root{
